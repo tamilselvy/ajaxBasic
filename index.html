@@ -66,6 +66,8 @@
 <div class="container">
     <h1>Simple form</h1>
     <input type="text" name="fname" id="fname" placeholder="Enter your name"><br>
+    <input type="email" name="email" id="email" placeholder="Enter your email"><br>
+    <input type="password" name="password" id="password" placeholder="Enter your password"><br>
     <input type="submit" name="submit" id="submit" value="Submit" class="btn">
     <div id="result"></div>
 </div>
@@ -74,7 +76,10 @@
         $(document).ready (function(){
             $("#submit").click(function(){
                 var user_name = $("#fname").val();
-                $.post("test.php",{name:user_name} ,function(text){
+                var user_email = $("#email").val();
+                var user_pass = $("#password").val();
+
+                $.post("test.php",{name:user_name, email:user_email, pass:user_pass} ,function(text){
                     $("#result").html(text);
                 });
             });
